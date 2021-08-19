@@ -1,0 +1,129 @@
+# Задание 1
+
+def digits_sum(x):
+    x_1 = x % 10
+    x_2 = (x % 100 - x_1) / 10
+    x_3 = (x - x_1 - x_2 * 10) / 100
+    return x_1 + x_2 + x_3
+
+
+print(digits_sum(num))
+
+
+def digits_prod(x):
+    x_1 = x % 10
+    x_2 = (x % 100 - x_1) / 10
+    x_3 = (x - x_1 - x_2 * 10) / 100
+    return x_1 * x_2 * x_3
+
+
+print(digits_prod(num))
+
+
+# Задание 2
+
+def pobit(a, b):
+    return [a & b, a | b, a ^ b]
+
+
+print(pobit(5, 6))
+print(5 << 2)  # сдвиг на два разряда влево увеличит число в 2 раза дважды
+print(5 >> 2)  # а этот сдвиг поделит число нацело на 2 дважды
+
+
+# Задание 3
+
+def line(M_1, M_2):
+    if M_1[0] != M_2[0]:
+        k = (M_2[1] - M_1[1]) / (M_2[0] - M_1[0])
+        b = (M_2[0] * M_1[1] - M_1[0] * M_2[1]) / (M_2[0] - M_1[0])
+        print(f'Уравнение прямой y = {k:.2f}x + {b:.2f}')
+    else:
+        print(f'Уравнение прямой x = {M_1[0]:.2f}')
+
+
+print(line([0, 1], [2, 7]))
+
+# Задание 4
+
+from random import randint, uniform
+
+d_1 = input('Начало диапазона')
+d_2 = input('Конец диапазона')
+
+if type(d_1) is int:
+    res = randint(int(d_1), int(d_2))
+elif type(d_1) is float:
+    res = uniform(float(d_1), float(d_2))
+elif type(d_1) is str:
+    res = chr(randint(ord(d_1), ord(d_2)))
+else:
+    print('Некорректный тип данных')
+
+print(res)
+
+# Задание 5
+
+l_1 = input('Первая буква')
+l_2 = input('Вторая буква')
+
+
+def let_num(letter):
+    return ord((letter.upper())) - 64
+
+
+dist = abs(let_num(l_1) - let_num(l_2)) - 1
+
+print(let_num(l_1))
+print(let_num(l_2))
+
+print(dist)
+
+# Задание 6
+
+let_num = int(input('Введите номер буквы: '))
+
+let_num += ord('a') - 1
+
+let = chr(let_num)
+
+print(f'Ваша буква: {let}')
+
+# Задание 7
+
+a = float(input('Сторона a = '))
+b = float(input('Сторона b = '))
+c = float(input('Сторона c = '))
+
+if a + b >= c and a + c >= b and b + c >= a:
+    if a == b or b == c or c == a:
+        if a == b and a == c:
+            print('Равносторонний')
+        else:
+            print('Равнобедренный')
+    else:
+        print('Общего вида')
+else:
+    print('Не существует')
+
+# Задание 8
+
+year = int(input('Введите год'))
+
+if year % 4 != 0 or (year % 100 == 0 and year % 400 != 0):
+    print('Невисокосный')
+else:
+    print("Високосный")
+
+# Задание 9
+
+a = float(input('Введите первое число: '))
+b = float(input('Введите второе число: '))
+c = float(input('Введите третье число: '))
+
+if b < a < c or c < a < b:
+    print(a)
+elif a < b < c or c < b < a:
+    print(b)
+else:
+    print(c)
